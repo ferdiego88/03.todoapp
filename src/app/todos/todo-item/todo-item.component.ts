@@ -41,6 +41,8 @@ export class TodoItemComponent implements OnInit {
   editar() {
     this.editando = true;
 
+    this.txtInput.setValue(this.todo.texto);
+
     setTimeout(() => {
       this.txtInputFisico.nativeElement.select();
     }, 200);
@@ -50,6 +52,16 @@ export class TodoItemComponent implements OnInit {
 
   terminarEdicion() {
     this.editando = false;
+
+    if (this.txtInput.invalid) {return;}
+    if (this.txtInput.value === this.todo.texto) {return;}
+
+    this.store.dispatch(
+      actions.editar({
+        id: this.todo.id,
+        texto: this.txtInput.value
+      })
+    )
   }
 
 }
