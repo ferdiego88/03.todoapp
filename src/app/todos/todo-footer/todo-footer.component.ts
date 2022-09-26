@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.reducer';
 import * as actions from '../../filtro/filtro.actions';
+import { toogleAll } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-footer',
@@ -29,4 +30,7 @@ export class TodoFooterComponent implements OnInit {
       this.store.dispatch(actions.setFiltro({filtro}));
   }
 
+  limpiarCompletados(){
+    this.store.dispatch(toogleAll({completado:false}));
+  }
 }
