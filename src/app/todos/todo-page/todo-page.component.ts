@@ -16,8 +16,8 @@ export class TodoPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toogleAll() {
+  toggleAll() {
     this.completado = !this.completado;
-    this.store.dispatch(actions.toogleAll({completado:this.completado}));
+    this.store.dispatch(actions.toggleAll({completado:this.completado}));
   }
 }
